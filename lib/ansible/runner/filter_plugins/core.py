@@ -25,6 +25,7 @@ import glob
 import re
 import collections
 import operator as py_operator
+import urlparse
 from ansible import errors
 from ansible.utils import md5s
 from distutils.version import LooseVersion, StrictVersion
@@ -307,4 +308,7 @@ class FilterModule(object):
 
             # random numbers
             'random': rand,
+
+            # url manipulation
+            'urljoin': urlparse.urljoin,
         }

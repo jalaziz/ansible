@@ -355,6 +355,14 @@ To replace text in a string with regex, use the "regex_replace" filter::
     # convert "foobar" to "bar"
     {{ 'foobar' | regex_replace('^f.*o(.*)$', '\\1') }}
 
+To join a base URL with a relative path, use the "urljoin" filter::
+
+    vars:
+      mirror_url: "http://mirror.example.org/foo/"
+
+    tasks:
+        - get_url: url={{ mirror_url|urljoin('package.tar.gz') }} dest=/tmp/package.tar.gz
+
 A few useful filters are typically added with each new Ansible release.  The development documentation shows
 how to extend Ansible filters by writing your own as plugins, though in general, we encourage new ones
 to be added to core so everyone can make use of them.
